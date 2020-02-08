@@ -35,17 +35,28 @@ def initial_round
   card_2 = deal_card
   card_total = card_1 + card_2
   display_card_total(card_total)
-  card_total 
+  card_total
 end
 
-def hit?
+def hit?(card_total)
   # code hit? here
+  prompt_user
+  input = get_user_input
+  if input == 'h'
+    card_total += deal_card
+  elsif input == 's'
+    card_total
+  else
+    invalid_command
+    hit?(card_total)
+  end
+  card_total
 end
 
 def invalid_command
   # code invalid_command here
+  puts "Please enter a valid command"
 end
-
 #####################################################
 # get every test to pass before coding runner below #
 #####################################################
